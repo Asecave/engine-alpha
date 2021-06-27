@@ -62,7 +62,7 @@ public class Spiegel extends Game implements KlickReagierbar, RechtsKlickReagier
 	 * 		Fenstertitel
 	 */
 	public Spiegel (MineGameE mine, int breiteF, int hoeheF, String titelF) {
-		super(breiteF, hoeheF, titelF);
+		super(breiteF, hoeheF, titelF, 40);
 		this.mine = mine;
 		maus = new Maus(3, false, false);
 		mausAnmelden(maus);

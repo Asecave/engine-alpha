@@ -35,7 +35,7 @@ public class Zeichner extends Canvas implements Runnable {
 	/**
 	 * Das Intervall, in dem das Fenster upgedated wird.
 	 */
-	public static final int UPDATE_INTERVALL = 40;
+	public static int UPDATE_INTERVALL = 40;
 
 	private static final long serialVersionUID = 188647530006553893L;
 
@@ -88,7 +88,8 @@ public class Zeichner extends Canvas implements Runnable {
 	 * @param c
 	 * 		Die Kamera, deren Sicht grafisch dargestellt werden soll.
 	 */
-	public Zeichner(int x, int y, Kamera c) {
+	public Zeichner(int x, int y, Kamera c, int updateDelay) {
+		UPDATE_INTERVALL = updateDelay;
 		this.setSize(x, y);
 		this.setPreferredSize(getSize());
 		this.setFocusable(true);
@@ -121,11 +122,13 @@ public class Zeichner extends Canvas implements Runnable {
 		g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED);
 
 		while (work) {
+			long startTime = System.currentTimeMillis();
 			render(g);
 			bs.show();
+			long timeTaken = System.currentTimeMillis() - startTime;
 
 			try {
-				Thread.sleep(UPDATE_INTERVALL);
+				Thread.sleep(Math.max(UPDATE_INTERVALL - timeTaken, 0));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

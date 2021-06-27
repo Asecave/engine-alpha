@@ -54,7 +54,7 @@ public class FensterE extends Game {
 	 * 		Der gewünschte Titel.
 	 */
 	private FensterE (int breite, int hoehe, String titel) {
-		super(breite, hoehe, titel);
+		super(breite, hoehe, titel, 40);
 		Fenster fenster = super.getFensterInternal();
 		fenster.setLocation(10,10);
 	}

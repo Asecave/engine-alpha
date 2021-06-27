@@ -139,8 +139,8 @@ public abstract class Game implements TastenReagierbar {
 	 * 		<code>x</code> und <code>y</code> beschreiben dann die Masse dieses Fensters, <b>der
 	 * 		Bildschirm wird also an die gewuenschte X-Y-Groesse angepasst!!!</b>
 	 */
-	public Game (int x, int y, boolean vollbild) {
-		this(x, y, "", vollbild, true);
+	public Game (int x, int y, boolean vollbild, int updateDelay) {
+		this(x, y, "", vollbild, true, updateDelay);
 	}
 
 	/**
@@ -166,8 +166,8 @@ public abstract class Game implements TastenReagierbar {
 	 * 		Fensters geklickt werden kann, wodurch der Benutzer im Spiel "gefangen" waere und <b>dies
 	 * 		ist etwas unbeschreiblich aergerliches fuer den Spielbenutzer!!!!!!!!!!!</b>
 	 */
-	public Game (int x, int y, String titel, boolean vollbild, boolean exitOnEsc) {
-		this(x, y, titel, vollbild, exitOnEsc, -1, -1);
+	public Game (int x, int y, String titel, boolean vollbild, boolean exitOnEsc, int updateDelay) {
+		this(x, y, titel, vollbild, exitOnEsc, -1, -1, updateDelay);
 	}
 
 	/**
@@ -196,8 +196,8 @@ public abstract class Game implements TastenReagierbar {
 	 * @param fensterY
 	 * 		Die Y-Koordinate der linken oberen Ecke des Fensters auf dem Computerbildschirm
 	 */
-	public Game (int x, int y, String titel, boolean vollbild, boolean exitOnEsc, int fensterX, int fensterY) {
-		fenster = new Fenster(x, y, titel, vollbild, fensterX, fensterY);
+	public Game (int x, int y, String titel, boolean vollbild, boolean exitOnEsc, int fensterX, int fensterY, int updateDelay) {
+		fenster = new Fenster(x, y, titel, vollbild, fensterX, fensterY, updateDelay);
 		this.exitOnEsc = exitOnEsc;
 
 		cam = fenster.getCam();
@@ -230,8 +230,8 @@ public abstract class Game implements TastenReagierbar {
 	 * @param y
 	 * 		Die Hoehe des Fenstsers
 	 */
-	public Game (int x, int y) {
-		this(x, y, "");
+	public Game (int x, int y, int updateDelay) {
+		this(x, y, "", updateDelay);
 	}
 
 	/**
@@ -246,8 +246,8 @@ public abstract class Game implements TastenReagierbar {
 	 * @param titel
 	 * 		Der Titel des Spielfensters
 	 */
-	public Game (int x, int y, String titel) {
-		this(x, y, titel, false, true);
+	public Game (int x, int y, String titel, int updateDelay) {
+		this(x, y, titel, false, true, updateDelay);
 	}
 
 	/**
@@ -255,7 +255,7 @@ public abstract class Game implements TastenReagierbar {
 	 * Groesse 500 auf 500 (kein Vollbild) erstellt, das bei Tastendruck auf "Escape" beendet wird.
 	 */
 	public Game () {
-		this(500, 500, "", false);
+		this(500, 500, "", false, 40);
 	}
 
 	/**
@@ -276,8 +276,8 @@ public abstract class Game implements TastenReagierbar {
 	 * 		<code>x</code> und <code>y</code> beschreiben dann die Masse dieses Fensters, <b>der
 	 * 		Bildschirm wird also an die gewuenschte X-Y-Groesse angepasst!!!</b>
 	 */
-	public Game (int x, int y, String titel, boolean vollbild) {
-		this(x, y, titel, vollbild, true);
+	public Game (int x, int y, String titel, boolean vollbild, int updateDelay) {
+		this(x, y, titel, vollbild, true, updateDelay);
 	}
 
 	/**

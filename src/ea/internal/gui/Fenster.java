@@ -122,7 +122,7 @@ public class Fenster extends Frame {
 	 * 		Die Hoehe
 	 */
 	public Fenster (int x, int y) {
-		this(x, y, "EngineAlpha - Ein Projekt von Michael Andonie", false, 50, 50);
+		this(x, y, "EngineAlpha - Ein Projekt von Michael Andonie", false, 50, 50, 40);
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class Fenster extends Frame {
 	 * @param fensterY
 	 * 		Die Y-Koordinate des Fensters auf dem Computerbildschirm.
 	 */
-	public Fenster (int breite, int hoehe, String titel, boolean vollbild, int fensterX, int fensterY) {
+	public Fenster (int breite, int hoehe, String titel, boolean vollbild, int fensterX, int fensterY, int updateDelay) {
 		super(titel);
 
 		frameCount++;
@@ -241,7 +241,7 @@ public class Fenster extends Frame {
 			setVisible(true);
 		}
 
-		this.zeichner = new Zeichner(breite, hoehe, new Kamera(breite, hoehe, new Zeichenebene()));
+		this.zeichner = new Zeichner(breite, hoehe, new Kamera(breite, hoehe, new Zeichenebene()), updateDelay);
 		this.add(zeichner);
 		this.zeichner.init();
 
